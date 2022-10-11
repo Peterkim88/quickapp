@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Nav, Row } from 'react-bootstrap';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 function CustomerHeader() {
@@ -22,7 +22,7 @@ function CustomerHeader() {
               <LinkContainer to='/login'>
                 <Nav.Link><i className='fas fa-user'></i> Login</Nav.Link>
               </LinkContainer>
-
+                            
             </Nav>
           </Navbar.Collapse>
         </Container>

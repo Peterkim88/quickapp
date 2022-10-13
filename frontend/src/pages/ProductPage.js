@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails } from "../actions/productDetailsActions";
 
-function ProductPage({ history }) {
+function ProductPage() {
   const [qty, setQty] = useState(1)
   const params = useParams();
   const productDetails = useSelector(state => state.productDetails)
@@ -112,6 +112,7 @@ function ProductPage({ history }) {
                       onClick={addToCartHandler}
                       className="btn btn-primary w-100" 
                       disabled={product.countInStock <= 0} 
+                      autoComplete="off"
                       type="button">
                         Add to Cart
                       </Button>

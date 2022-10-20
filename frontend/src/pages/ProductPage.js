@@ -12,7 +12,7 @@ function ProductPage() {
   const params = useParams();
   const productDetails = useSelector(state => state.productDetails)
   const {loading, error, product} = productDetails
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
 

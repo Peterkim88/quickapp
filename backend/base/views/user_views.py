@@ -54,14 +54,13 @@ def getAllUsers(request):
   return Response(serializer.data)
 
 
-@api_view(['POST'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateUserProfile(request):
   user = request.user
   serializer = UserSerializerWithToken(user, many=False)
   
   data = request.data
-
   user.first_name = data['name']
   user.username = data['email']
   user.email = data['email']

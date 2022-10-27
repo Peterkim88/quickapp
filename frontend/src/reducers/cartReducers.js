@@ -1,8 +1,10 @@
 export const CART_ADD_ITEM = "CART_ADD_ITEM"
 export const CART_UPDATE_ITEM = "CART_UPDATE_ITEM"
 export const CART_REMOVE_ITEM = "CART_REMOVE_ITEM"
+export const CART_SAVE_SHIPPING_ADDRESS = "CART_SAVE_SHIPPING_ADDRESS"
+export const CART_SAVE_PAYMENT_METHOD = "CART_SAVE_PAYMENT_METHOD"
 
-export const cartReducer = (state={cartItems:[]}, action) => {
+export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) => {
     const item = action.payload
     switch (action.type) {
         case CART_ADD_ITEM:
@@ -46,6 +48,16 @@ export const cartReducer = (state={cartItems:[]}, action) => {
             return{
                 ...state,
                 cartItems:state.cartItems.filter(x => x.productId !== item.productId)
+            }
+        case CART_SAVE_SHIPPING_ADDRESS:
+            return{
+                ...state,
+                shippingAddress: action.payload
+            }
+        case CART_SAVE_PAYMENT_METHOD:
+            return{
+                ...state,
+                paymentMethod: action.payload
             }
         default:
             return state;

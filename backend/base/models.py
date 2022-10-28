@@ -48,8 +48,8 @@ class Order(models.Model):
   createdAt = models.DateTimeField(auto_now_add=True)
   _id = models.AutoField(primary_key=True, editable=False)
   
-  def __str__(self) -> str:
-    return self.createdAt
+  def __str__(self):
+    return str(self.createdAt)
   
 
 class OrderItem(models.Model):
@@ -61,8 +61,8 @@ class OrderItem(models.Model):
   image = models.CharField(max_length=200, null=True, blank=True)
   _id = models.AutoField(primary_key=True, editable=False)
   
-  def __str__(self) -> str:
-    return self.name
+  def __str__(self):
+    return str(self.name)
   
   
 class ShippingAddress(models.Model):
@@ -74,5 +74,5 @@ class ShippingAddress(models.Model):
   shippingPrice = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
   _id = models.AutoField(primary_key=True, editable=False)
   
-  def __str__(self) -> str:
-    return self.address
+  def __str__(self):
+    return str(self.address)

@@ -4,7 +4,8 @@ import {
     CART_UPDATE_ITEM, 
     CART_REMOVE_ITEM, 
     CART_SAVE_SHIPPING_ADDRESS,
-    CART_SAVE_PAYMENT_METHOD
+    CART_SAVE_PAYMENT_METHOD,
+    CART_RESET
 } from "../reducers/cartReducers";
 
 export const addToCart = (id, currQty) => async (dispatch, getState) => {
@@ -69,3 +70,8 @@ export const savePaymentMethod = (data) => (dispatch) => {
 
     localStorage.setItem('paymentMethod', JSON.stringify(data))
 }
+
+export const cartReset = () => (dispatch) => {
+    localStorage.removeItem('cartItems')
+    dispatch({ type: CART_RESET })
+  }

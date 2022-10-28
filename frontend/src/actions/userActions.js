@@ -89,7 +89,7 @@ export const register = (name, email, password) => async (dispatch) => {
         type: USER_REGISTER_FAIL,
         payload: error.response && error.response.data.detail
           ? error.response.data.detail
-          : error.message
+            : error.message
       })
     }
 }

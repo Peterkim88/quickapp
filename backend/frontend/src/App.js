@@ -14,6 +14,7 @@ import PaymentPage from "./pages/PaymentPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
 import UserListPage from './pages/UserListPage'
+import UserEditPage from "./pages/UserEditPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="cart/:id" element={<CartPage />} />
 
             <Route path="/admin/userslist" element={<UserListPage />} />
+            <Route path="admin/user/:id/edit" element={<UserEditPage />} />
           </Routes>
         </Container>
       </main>

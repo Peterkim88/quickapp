@@ -26,12 +26,22 @@ function CustomerHeader() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
 
-              <LinkContainer to="/cart">
-                <Nav.Link><i className='fas fa-shopping-cart'></i> Cart</Nav.Link>
-              </LinkContainer>
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin Panel' id='adminmenu'>
+                  <LinkContainer to='/admin/userslist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/productslist'>
+                    <NavDropdown.Item>Products</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/orderslist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              )}
 
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
+                <NavDropdown title={`Hello, ${userInfo.name}`} id='username'>
                   <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
@@ -43,6 +53,10 @@ function CustomerHeader() {
                 </LinkContainer>
               )}
                             
+              <LinkContainer to="/cart">
+                <Nav.Link><i className='fas fa-shopping-cart'></i> Cart</Nav.Link>
+              </LinkContainer>
+
             </Nav>
           </Navbar.Collapse>
         </Container>

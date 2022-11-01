@@ -13,6 +13,7 @@ import ShippingPage from './pages/ShippingPage'
 import PaymentPage from "./pages/PaymentPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
+import UserListPage from './pages/UserListPage'
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
             <Route path="product/:id" element={<ProductPage />} />
             <Route path="cart" element={<CartPage />} />
             <Route path="cart/:id" element={<CartPage />} />
+
+            <Route path="/admin/userslist" element={<UserListPage />} />
           </Routes>
         </Container>
       </main>

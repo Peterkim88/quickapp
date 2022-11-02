@@ -21,14 +21,12 @@ from decouple import config
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    # 'quick-mj97.onrender.com/',
-    # 'https://quick-mj97.onrender.com/'
+    'quick-mj97.onrender.com',
     '127.0.0.1', 
-    'localhost',
-    'quick-mj97.onrender.com'
+    'localhost'
 ]
 
 
@@ -42,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'base.apps.BaseConfig',
-    
     'rest_framework',
     'corsheaders',
     'storages'
+
+    'base.apps.BaseConfig',
 ]
 
 REST_FRAMEWORK = {

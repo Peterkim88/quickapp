@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PayPalButton } from 'react-paypal-button-v2'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { getOrderDetails, payOrder } from '../actions/orderActions'
-import { ORDER_PAY_RESET } from '../reducers/orderReducers'
+import { deliverOrder, getOrderDetails, payOrder } from '../actions/orderActions'
+import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../reducers/orderReducers'
 
 function OrderDetailsPage() {
 
@@ -27,6 +27,9 @@ function OrderDetailsPage() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const orderDeliver = useSelector(state => state.orderDeliver)
+    const { loading: loadingDeliver, success: successDeliver } = orderDeliver
+
     if (!loading && !error){
         order.itemsPrice = Number(
             order.orderItems.reduce((acc, item) => 
@@ -34,7 +37,6 @@ function OrderDetailsPage() {
             ).toFixed(2)
         )
     }
-    // AcsqUaMwA7A7z2hNGEYpaMlhjIn81-ljPYdISlj59miUVArmNG6s8gtqZSzlR6A9dxBYA_Wsx3R9sOcU
 
     const addPayPalScript = () => {
         const script = document.createElement('script')
@@ -53,8 +55,9 @@ function OrderDetailsPage() {
             navigate('/login')
         }
 
-        if (!order || successPay || order._id !== Number(orderId)){
+        if (!order || successPay || order._id !== Number(orderId) || successDeliver){
             dispatch({type: ORDER_PAY_RESET})
+            dispatch({type: ORDER_DELIVER_RESET})
             dispatch(getOrderDetails(orderId))
         } else if (!order.isPaid){
             if(!window.paypal){
@@ -63,10 +66,15 @@ function OrderDetailsPage() {
                 setSdkReady(true)
             }
         }
-    }, [dispatch, order, orderId, successPay])
+    }, [dispatch, order, orderId, successPay, successDeliver])
 
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(orderId, paymentResult))
+    }
+
+    const deliverHandler = () => {
+        dispatch(deliverOrder(order))
+        // navigate('/admin/orderslist')
     }
 
     return loading ? (
@@ -186,6 +194,16 @@ function OrderDetailsPage() {
                                 </ListGroup.Item>
                             )}
 
+                            {loadingDeliver && <Loader/>}
+                            {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                                <ListGroup.Item>
+                                    <Button
+                                        type='button'
+                                        className='btn btn-block'
+                                        onClick={deliverHandler}
+                                    >Mark As Delivered</Button>
+                                </ListGroup.Item>
+                            )}
                         </ListGroup>
                     </Card>
                 </Col>

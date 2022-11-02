@@ -25,7 +25,7 @@ function CartPage() {
       dispatch(addToCart(productId, qty))
     }
     navigate('/cart')
-  }, [dispatch])
+  }, [dispatch, navigate, productId, qty])
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))

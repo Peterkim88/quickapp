@@ -19,9 +19,9 @@ export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) =
                 Object.values(state.cartItems).map(x => {
                     if (x.productId === item.productId) {
                         if (x.countInStock < (item.qty + x.qty)){
-                            x.qty = x.countInStock
+                            return x.qty = x.countInStock
                         } else {
-                            x.qty += Number(item.qty)
+                            return x.qty += Number(item.qty)
                         }
                     }
                 })
@@ -38,7 +38,7 @@ export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) =
         case CART_UPDATE_ITEM:
             Object.values(state.cartItems).map(x => {
                 if (x && x.productId === item.productId) {
-                    x.qty = Number(item.qty)
+                    return x.qty = Number(item.qty)
                 }
             })
             return {

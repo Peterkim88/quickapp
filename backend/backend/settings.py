@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'corsheaders',
+    'storages'
 ]
 
 REST_FRAMEWORK = {
@@ -128,11 +129,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'quickawsdb',
-        'USER': 'quickawsmaster',
-        'PASSWORD': 'testtest123',
-        'HOST': 'quickaws.cserb8zm0nhy.us-east-1.rds.amazonaws.com',
-        'PORT': '5432'
+        'NAME': config("DBNAME"),
+        'USER': config("DBUSER"),
+        'PASSWORD': config("DBPASSWORD"),
+        'HOST': config("DBHOST"),
+        'PORT': config("DBPORT")
     }
 }
 
@@ -190,3 +191,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")

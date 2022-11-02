@@ -25,7 +25,7 @@ function UserListPage() {
         } else {
             nav('/login')
         }
-    }, [dispatch, nav, successDelete])
+    }, [dispatch, nav, successDelete, userInfo])
 
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure you want to delete this user?')){
@@ -70,7 +70,7 @@ function UserListPage() {
                                             </LinkContainer>
                                         </td>
                                         <td>
-                                            <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(user._id)}>
+                                            <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(user._id)} disabled={user.isAdmin ? true : false}>
                                                 <i className='fas fa-trash'></i>
                                             </Button>
                                         </td>

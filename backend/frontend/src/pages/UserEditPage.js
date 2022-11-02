@@ -39,7 +39,7 @@ function UserEditPage() {
                 setIsAdmin(user.isAdmin)
             }
         }
-    }, [user, userId, successUpdate, nav])
+    }, [dispatch, user, userId, successUpdate, nav])
 
     const submitHandler = (e) => {
         e.preventDefault()

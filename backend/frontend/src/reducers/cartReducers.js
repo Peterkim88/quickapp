@@ -24,6 +24,7 @@ export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) =
                             return x.qty += Number(item.qty)
                         }
                     }
+                    return
                 })
                 return {
                     ...state,
@@ -40,6 +41,7 @@ export const cartReducer = (state={cartItems:[], shippingAddress: {}}, action) =
                 if (x && x.productId === item.productId) {
                     return x.qty = Number(item.qty)
                 }
+                return
             })
             return {
                 ...state,

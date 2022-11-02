@@ -23,7 +23,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['quick-mj97.onrender.com']
+ALLOWED_HOSTS = ['https://quick-mj97.onrender.com/']
 
 
 # Application definition

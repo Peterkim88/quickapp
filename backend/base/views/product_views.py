@@ -32,6 +32,7 @@ def createProduct(request):
     user = user,
     name = 'Sample Name',
     price = 0,
+    image = '/sample.jpg',
     brand = 'Sample Brand',
     countInStock = 0,
     category = 'Sample Category',

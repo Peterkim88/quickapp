@@ -134,7 +134,7 @@ DATABASES = {
         'USER': config("DBUSER"),
         'PASSWORD': config("DBPASSWORD"),
         'HOST': config("DBHOST"),
-        'PORT': config("DBPORT", cast=int)
+        'PORT': 5432
     }
 }
 

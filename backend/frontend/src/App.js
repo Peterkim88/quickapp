@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import CustomerHeader from "./components/Header";
 import Footer from "./components/Footer";
 import { Container } from "react-bootstrap";
@@ -18,8 +19,13 @@ import UserEditPage from "./pages/UserEditPage";
 import ProductListPage from "./pages/ProductListPage";
 import ProductEditPage from "./pages/ProductEditPage";
 import OrderListPage from "./pages/OrderListPage";
+import icon from './favicon.ico'
 
 function App() {
+  useEffect(() => {
+    const favicon = document.getElementById('favicon');
+    favicon.setAttribute('href', icon);
+  }, []);
   return (
     <Router>
       <CustomerHeader />

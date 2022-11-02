@@ -21,9 +21,15 @@ from decouple import config
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://quick-mj97.onrender.com/']
+ALLOWED_HOSTS = [
+    # 'quick-mj97.onrender.com/',
+    # 'https://quick-mj97.onrender.com/'
+    '127.0.0.1', 
+    'localhost',
+    'quick-mj97.onrender.com'
+]
 
 
 # Application definition
@@ -84,7 +90,7 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -196,3 +202,7 @@ AWS_QUERYSTRING_AUTH = False
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+
+
+if os.getcwd() == '/app':
+    DEBUG = False

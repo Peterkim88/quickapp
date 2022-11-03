@@ -18,7 +18,7 @@ import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
 from decouple import config
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = 'django-insecure-v(nr&4u+0@(u*yoxd+2y#o7je-3iry%(j%^t#$8w0^du=p1ke4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,10 +130,10 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config("DBNAME"),
-        'USER': config("DBUSER"),
-        'PASSWORD': config("DBPASSWORD"),
-        'HOST': config("DBHOST"),
+        'NAME': 'quickawsdb',
+        'USER': 'quickawsmaster',
+        'PASSWORD': 'testtest123',
+        'HOST': 'quickaws.cserb8zm0nhy.us-east-1.rds.amazonaws.com',
         'PORT': 5432
     }
 }
@@ -197,9 +197,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_QUERYSTRING_AUTH = False
-AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+AWS_ACCESS_KEY_ID = 'AKIAZHNRQP6CSSQDJMYP'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'quickapp-bucket'
 
 
 # if os.getcwd() == '/app':

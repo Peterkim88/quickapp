@@ -13,6 +13,7 @@ export const PRODUCT_UPDATE_SUCCESS = 'PRODUCT_UPDATE_SUCCESS'
 export const PRODUCT_UPDATE_FAIL = 'PRODUCT_UPDATE_FAIL'
 export const PRODUCT_UPDATE_RESET = 'PRODUCT_UPDATE_RESET'
 
+
 export const productListReducer = (state = {products:[]}, action) => {
   switch (action.type) {
     case 'PRODUCT_LIST_REQUEST':

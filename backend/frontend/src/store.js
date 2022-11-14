@@ -20,6 +20,7 @@ import {
   orderListReducer, 
   orderPayReducer 
 } from './reducers/orderReducers';
+import { reviewCreateReducer } from './reducers/reviewReducers';
 
 const reducer = combineReducers({
   productList: productListReducer,
@@ -40,7 +41,8 @@ const reducer = combineReducers({
   productDelete: productDeleteReducer,
   productCreate: productCreateReducer,
   productUpdate: productUpdateReducer,
-  allOrders: orderListReducer
+  allOrders: orderListReducer,
+  reviewCreate: reviewCreateReducer
 });
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ?

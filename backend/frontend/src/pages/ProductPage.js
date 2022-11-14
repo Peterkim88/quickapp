@@ -6,8 +6,8 @@ import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProductDetails } from "../actions/productDetailsActions";
-import { REVIEW_CREATE_RESET } from '../reducers/reviewReducers'
-import { createReview } from "../actions/reviewActions";
+import { REVIEW_CREATE_RESET } from '../reducers/productReducers';
+import { createProductReview } from '../actions/productActions';
 
 function ProductPage() {
   const [qty, setQty] = useState(1)
@@ -47,7 +47,7 @@ function ProductPage() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(createReview(params.id, {rating, comment}))
+    dispatch(createProductReview(params.id, {rating, comment}))
   }
   
   return (

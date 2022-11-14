@@ -12,6 +12,10 @@ export const PRODUCT_UPDATE_REQUEST = 'PRODUCT_UPDATE_REQUEST'
 export const PRODUCT_UPDATE_SUCCESS = 'PRODUCT_UPDATE_SUCCESS'
 export const PRODUCT_UPDATE_FAIL = 'PRODUCT_UPDATE_FAIL'
 export const PRODUCT_UPDATE_RESET = 'PRODUCT_UPDATE_RESET'
+export const REVIEW_CREATE_REQUEST = 'REVIEW_CREATE_REQUEST'
+export const REVIEW_CREATE_SUCCESS = 'REVIEW_CREATE_SUCCESS'
+export const REVIEW_CREATE_FAIL = 'REVIEW_CREATE_FAIL'
+export const REVIEW_CREATE_RESET = 'REVIEW_CREATE_RESET'
 
 
 export const productListReducer = (state = {products:[]}, action) => {
@@ -65,6 +69,21 @@ export const productUpdateReducer = (state = {product: {}}, action) => {
       return {loading: false, error: action.payload}
     case 'PRODUCT_UPDATE_RESET':
       return {product: {}}
+    default:
+      return state;
+  }
+}
+
+export const reviewCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'REVIEW_CREATE_REQUEST':
+      return {loading: true}
+    case 'REVIEW_CREATE_SUCCESS':
+      return {loading: false, success: true}
+    case 'REVIEW_CREATE_FAIL':
+      return {loading: false, error: action.payload}
+    case 'REVIEW_CREATE_RESET':
+      return {}
     default:
       return state;
   }

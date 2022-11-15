@@ -10,7 +10,7 @@ function SearchBox() {
     const submitHandler = (e) => {
         e.preventDefault()
         if (keyword){
-            nav(`/?keyword=${keyword}`)
+            nav(`/?keyword=${keyword}&page=1`)
         }
     }
 

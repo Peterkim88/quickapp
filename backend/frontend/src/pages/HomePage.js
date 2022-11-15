@@ -5,6 +5,7 @@ import Product from '../components/Product';
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listProducts } from "../actions/productActions";
+import { useLocation } from "react-router-dom";
 
 function HomePage() {
 
@@ -12,9 +13,19 @@ function HomePage() {
   const productList = useSelector(state => state.productList)
   const {error, loading, products} = productList
 
+  const location = useLocation();
+  // console.log(keyword)
+  
+  const params = new URLSearchParams(location.search);
+  const keyword = params.get("keyword");
+  
   useEffect(() => {
-    dispatch(listProducts())
-  }, [dispatch])
+    if (keyword){
+      dispatch(listProducts(keyword))
+    } else {
+      dispatch(listProducts())
+    }
+  }, [dispatch, keyword])
 
   return (
     <div>
